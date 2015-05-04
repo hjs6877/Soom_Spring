@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/jee
+       http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
+   
+	<!-- @Required, @Autowired, @Resource, @PostConstruct, @PreDestroy, @Configuration 어노테이션 처리 -->   
+	<context:annotation-config/>
+	
+	<!--
+		- xml 설정 파일과 빈 자동 스캔을 동시에 사용하는것을 테스트 하기 위해 서비스 클래스만
+		빈 자동 스캔 등록으로 설정하였다.
+	 -->
+	<context:component-scan base-package="kr.co.siksco">
+       <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+       <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+       <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+    
+	    
+	<!-- MULTIPART RESOLVERS 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10485760" />
+        <property name="maxInMemorySize" value="10485760" />
+    </bean>
+    -->
+   <!-- 파일 서비스 클래스
+   <bean id="fileService" class="siksco.util.file.FileService"
+   		p:uploadPath="#{globalProps['Globals.uploadPath']}"
+   		p:rootPath="#{globalProps['Globals.rootPath']}"/>
+    -->
+   <!-- 템플릿 클래스 설정 시작 -->
+ 	<!-- 페이지내이션 정보를 설정해주는 템플릿.
+ 	<bean id="paginationInfoTemplate" class="siksco.template.PaginationInfoTemplate"/>
+	 -->
+   <!-- 
+   <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="error/defaultException"/>
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.springframework.security.core.AuthenticationException">error/authenticationException</prop>
+            </props>
+        </property>
+    </bean>
+    -->
+</beans>
