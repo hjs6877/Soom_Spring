@@ -3,6 +3,7 @@
 	<name>Soom_Spring</name>
 	<comment></comment>
 	<projects>
+		<project>root</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
