@@ -6,3 +6,9 @@
 .bg-black {
 	background: "#000000" !important;
 }
+
+
+/*** margin style ****/
+.margin-none {
+	margin: 0;
+}

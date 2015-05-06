@@ -13,6 +13,7 @@
  		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java-version>1.8</java-version>
 		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
+		<org.springsecurity-version>3.1.2.RELEASE</org.springsecurity-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
@@ -80,6 +81,13 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 		
+		<!-- spring security -->
+		<dependency>
+	        <groupId>org.springframework.security</groupId>
+	        <artifactId>spring-security-web</artifactId>
+	        <version>${org.springsecurity-version}</version>
+	    </dependency>
+    
 		<!-- JSON View --> 
 		<dependency>
 			<groupId>net.sf.json-lib</groupId>
@@ -201,6 +209,13 @@
 		    <artifactId>mysql-connector-java</artifactId>
 		    <version>5.1.35</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.5.0</version>
+		</dependency>
+		
 		
 	</dependencies>
 </project>
