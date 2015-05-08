@@ -9,9 +9,13 @@ import java.sql.SQLException;
 import kr.co.siksco.tobby.user.domain.User;
 
 public class UserDao {
+	private ConnectionMaker connectionMaker;
+	
+	public UserDao(ConnectionMaker connectionMaker){
+		this.connectionMaker = connectionMaker; 
+	}
 	public void add(User user) throws ClassNotFoundException, SQLException{
-		Connection con = this.getConnection();
-		
+		Connection con = connectionMaker.makeConnection();
 		PreparedStatement ps = con.prepareStatement(
 				"INSERT INTO TEST_USER (id, name, password) values (?,?,?)");
 		
@@ -26,7 +30,7 @@ public class UserDao {
 	}
 	
 	public User get(String id) throws ClassNotFoundException, SQLException{
-		Connection con = this.getConnection();
+		Connection con = connectionMaker.makeConnection();
 		PreparedStatement ps = con.prepareStatement(
 				"SELECT * FROM TEST_USER WHERE id = ?");
 		
@@ -48,30 +52,5 @@ public class UserDao {
 		return user;
 	}
 	
-	private Connection getConnection() throws ClassNotFoundException, SQLException{
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection(
-				"jdbc:mysql://55447970fc6b4d799b0000d1-soom.cloudsc.kr:44861/soomspring?useUnicode=true&characterEncoding=utf8"
-				, "soomspring", "soomspring");
-		return con;
-	}
 	
-	public static void main(String[] args) throws ClassNotFoundException, SQLException{
-		UserDao dao = new UserDao();
-		
-		User user = new User();
-		user.setId("hjs6877");
-		user.setName("황정식");
-		user.setPassword("6877");
-		
-		dao.add(user);
-		
-		System.out.println(user.getId() + " 등록 성공");
-		
-		User user2 = dao.get(user.getId());
-		System.out.println(user2.getName());
-		System.out.println(user2.getPassword());
-		
-		System.out.println(user2.getId() + " 조회 성공");
-	}
 }
