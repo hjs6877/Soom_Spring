@@ -6,7 +6,7 @@ $("#btnLogin").bind("click", function(){
 	var userPass = $("#userPass").val();
 	$.ajax({
 		datatype : "json",
-		url : "login",
+		url : "/siksco/soom/signin",
 		method : "POST",
 		data : {
 			userEmail : userEmail,
