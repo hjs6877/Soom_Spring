@@ -30,7 +30,7 @@ public class LoginController {
 	@Autowired
 	private LoginServiceImpl loginService;
 	
-	@RequestMapping(value="/login", method=RequestMethod.POST)
+	@RequestMapping(value="/signin", method=RequestMethod.POST)
 	public String login(@RequestParam("userEmail")String userEmail, @RequestParam("userPass")String userPass, Map<String, Object> model){
 		
 		logger.info("서버쪽 로그인 컨트롤러 호출..");
